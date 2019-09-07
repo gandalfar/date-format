@@ -1,6 +1,6 @@
 module DateFormat.Language exposing
     ( Language
-    , english, spanish, dutch, swedish, portuguese, french
+    , english, spanish, dutch, swedish, portuguese, french, slovenian
     )
 
 {-|
@@ -625,3 +625,84 @@ toFrenchOrdinalSuffix n =
 
     else
         "e"
+
+
+-- Slovenian
+
+
+{-| The slovenian language!
+-}
+slovenian : Language
+slovenian =
+    Language
+        toSlovenianMonthName
+        (toSlovenianMonthName >> String.left 3)
+        toSlovenianWeekdayName
+        (toSlovenianWeekdayName >> String.left 3)
+        toEnglishAmPm
+        (\_ -> "")
+
+
+toSlovenianMonthName : Time.Month -> String
+toSlovenianMonthName month =
+    case month of
+        Jan ->
+            "januar"
+
+        Feb ->
+            "februar"
+
+        Mar ->
+            "marec"
+
+        Apr ->
+            "april"
+
+        May ->
+            "maj"
+
+        Jun ->
+            "junij"
+
+        Jul ->
+            "julij"
+
+        Aug ->
+            "avgust"
+
+        Sep ->
+            "september"
+
+        Oct ->
+            "oktober"
+
+        Nov ->
+            "november"
+
+        Dec ->
+            "december"
+
+
+toSlovenianWeekdayName : Weekday -> String
+toSlovenianWeekdayName weekday =
+    case weekday of
+        Mon ->
+            "ponedeljek"
+
+        Tue ->
+            "torek"
+
+        Wed ->
+            "sreda"
+
+        Thu ->
+            "četrtek"
+
+        Fri ->
+            "petek"
+
+        Sat ->
+            "sobota"
+
+        Sun ->
+            "nedelja"
